@@ -1,5 +1,5 @@
 const express = require("express")
-const { default: mongoose } = require("mongoose")
+const mongoose = require("mongoose")
 
 const PORT = 8000
 
@@ -17,6 +17,14 @@ mongoose.connect(connectionUrl).then(() => {
 
 // view engine
 app.set("view engine", "ejs")
+
+app.get("/", async (req, res, next) => {
+    try{
+        await res.render("index")
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+})
 
 // listen server
 app.listen(PORT, () => {
