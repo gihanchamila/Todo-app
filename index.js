@@ -24,7 +24,15 @@ app.get("/", async (req, res, next) => {
     }catch(error){
         res.status(500).json({message:error.message})
     }
-})
+});
+
+app.get("/app-todo", (req, res, next) => {
+    try{
+        res.render("newToDo")
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+});
 
 // listen server
 app.listen(PORT, () => {
