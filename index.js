@@ -40,7 +40,15 @@ app.get("/update-todo", (req, res, next) => {
     }catch(error){
         res.status(500).json({message:error.message})
     }
-})
+});
+
+app.get("/delete-todo", (req, res, next) => {
+    try{
+        res.render("deleteToDo")
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+});
 
 // listen server
 app.listen(PORT, () => {
