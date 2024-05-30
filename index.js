@@ -1,5 +1,7 @@
+const { timeStamp } = require("console")
 const express = require("express")
 const mongoose = require("mongoose")
+const { type } = require("os")
 const path = require("path")
 
 const PORT = 8000
@@ -15,6 +17,16 @@ mongoose.connect(connectionUrl).then(() => {
 }).catch((error) => {
     console.log(error.message)
 });
+
+const todoSchema = mongoose.Schema({
+        title:{type:String, required:true},
+        desc: String
+    },{
+        timeStamp:true
+    }
+);
+
+const Todo = mongoose.model("todo", todoSchema)
 
 // view engine
 app.set("view engine", "ejs")
