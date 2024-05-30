@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")))
 
 app.get("/", async (req, res, next) => {
     try{
-        await res.render("index")
+        await res.render("index", {title:"List Todo"})
     }catch(error){
         res.status(500).json({message:error.message})
     }
@@ -30,7 +30,7 @@ app.get("/", async (req, res, next) => {
 
 app.get("/add-todo", (req, res, next) => {
     try{
-        res.render("newToDo")
+        res.render("newToDo", {title:"Add Todo"})
     }catch(error){
         res.status(500).json({message:error.message})
     }
@@ -38,7 +38,7 @@ app.get("/add-todo", (req, res, next) => {
 
 app.get("/update-todo", (req, res, next) => {
     try{
-        res.render("updateToDo")
+        res.render("updateToDo", {title:"Update Todo"})
     }catch(error){
         res.status(500).json({message:error.message})
     }
@@ -46,7 +46,7 @@ app.get("/update-todo", (req, res, next) => {
 
 app.get("/delete-todo", (req, res, next) => {
     try{
-        res.render("deleteToDo")
+        res.render("deleteToDo", {title:"Delete Todo"})
     }catch(error){
         res.status(500).json({message:error.message})
     }
