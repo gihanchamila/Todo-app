@@ -28,7 +28,7 @@ app.get("/", async (req, res, next) => {
     }
 });
 
-app.get("/app-todo", (req, res, next) => {
+app.get("/add-todo", (req, res, next) => {
     try{
         res.render("newToDo")
     }catch(error){
