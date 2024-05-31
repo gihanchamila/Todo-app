@@ -1,16 +1,20 @@
+body {
+  font-family: "Open Sans"
+}
 .table-container {
     border: 1px solid #bbb;
     width: 70%;
     margin: 0 auto;
     padding: 0px 30px 30px 30px;
     border-radius: 10px;
+    margin-top:10rem
   }
   .todo-title {
     text-align: center;
   }
   
   table {
-    font-family: arial, sans-serif;
+    font-family: "Open Sans", arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
