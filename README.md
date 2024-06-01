@@ -76,4 +76,4 @@ Make sure you have the following installed on your local machine:
 ## <span style="color:blue">Acknowledgments</span>
 
 - Thanks to the Express, EJS, and MongoDB communities for their amazing tools.
-```
+
