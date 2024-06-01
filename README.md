@@ -65,7 +65,7 @@ Make sure you have the following installed on your local machine:
 
 7. **Visit the application:**
 
-   Open your web browser and go to `http://localhost:3000`.
+   Open your web browser and go to `http://localhost:8000`.
 
 ## <span style="color:blue">Usage</span>
 
