@@ -5,6 +5,11 @@ const moment = require("moment")
 const connectMongodb = require("./init/mongoDB")
 const Todo = require("./models/Todo")
 const todoRoute = require("./routers/todo")
+const dotenv = require("dotenv")
+
+// environment variables
+dotenv.config()
+console.log(process.env.PORT)
 
 // init app
 const app = express()

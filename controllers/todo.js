@@ -19,9 +19,11 @@ const addtodoFormController = (req, res, next) => {
     }
 };
 
-const updatetodoFormController = (req, res, next) => {
+const updatetodoFormController = async (req, res, next) => {
     try{
-        res.render("updateToDo", {title:"Update Todo"})
+        const {id} = req.query
+        const todo = await Todo.findById(id)
+        res.render("updateToDo", {title:"Update Todo", todo})
     }catch(error){
         res.status(500).json({message:error.message})
     }
@@ -29,7 +31,8 @@ const updatetodoFormController = (req, res, next) => {
 
 const deletetodoPageController = (req, res, next) => {
     try{
-        res.render("updateToDo", {title:"Update Todo"})
+        const {id} = req.query
+        res.render("deleteToDo", {title:"Update Todo", id})
     }catch(error){
         res.status(500).json({message:error.message})
     }
@@ -51,4 +54,36 @@ const addtodoController = async (req, res, next) => {
     }
 }
 
-module.exports = {homeController, addtodoFormController, updatetodoFormController, deletetodoPageController, addtodoController}
+const updateToDoController = async (req, res, next) => {
+    try{
+      const {id} = req.params
+      const {title, description} = req.body
+
+      const todo = await Todo.findById(id)
+      if(!todo){
+        return res.status(404).json({message:"Todo not found"})
+      }
+
+      todo.title = title
+      todo.description = description
+      await todo.save()
+      res.redirect("/")
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+}
+
+const deleteTodoController = async (req, res, next) => {
+    try{
+        const {id, confirm} = req.query
+
+        if( confirm === "yes"){
+            await Todo.findByIdAndDelete(id)
+        }
+        res.redirect("/")
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+}
+
+module.exports = {homeController, addtodoFormController, updatetodoFormController, deletetodoPageController, addtodoController, updateToDoController, deleteTodoController}
